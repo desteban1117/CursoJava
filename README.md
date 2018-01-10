@@ -106,7 +106,7 @@ Las clases en Java pueden tener contructores que puedan inicializar sus atributo
 
 Con el operador `this` podemos hacer referencia al objeto con el que se esta trabajando actualmente, un ejemplo de esto es cuando tenemos un constructos con argumentos iguales a los atributos, para diferenciar los atributos de los argumentos se utiliza el operador `this`. Ejemplo
 
-    ```
+
     class Aritmetica{
       int a;
       int b;
@@ -116,7 +116,7 @@ Con el operador `this` podemos hacer referencia al objeto con el que se esta tra
         this.b = b;
       }
     }
-    ```
+    
     
 ## Memoria stack y heap
 
@@ -144,11 +144,11 @@ La herencia nos permite presentar comportamiento en común, evitar duplicación 
 
 ### Sintaxis
   se utiliza la palabra extends
-  ```
-  class Persona {...}
+  
+ ``` class Persona {...}
   
   class Empleado extends Persona {...}
   
   class Gerente extends Empleado {...}
-   ```
+  ```
  
