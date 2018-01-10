@@ -97,11 +97,11 @@ Al ser java un lenguaje orientado a objetos para crear un metodo debe estar dent
 
 Las clases en Java pueden tener contructores que puedan inicializar sus atributos con valores predeterminados. Si una clase no tiene contructor Java inicializará sus atributos con valores por default. El contructor lleva el nombre de la clase.
 
-  ```
-    NombreClase( argumentos ){
+    ```
+    NombreClase( argumentos ){
       code...
     }
-  ```
+    ```
 ## Alcance de Variables
 
 Con el operador `this` podemos hacer referencia al objeto con el que se esta trabajando actualmente, un ejemplo de esto es cuando tenemos un constructos con argumentos iguales a los atributos, para diferenciar los atributos de los argumentos se utiliza el operador `this`. Ejemplo
