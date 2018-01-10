@@ -150,5 +150,5 @@ La herencia nos permite presentar comportamiento en común, evitar duplicación 
   class Empleado extends Persona {...}
   
   class Gerente extends Empleado {...}
-```
+   ```
  
