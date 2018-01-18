@@ -151,4 +151,89 @@ La herencia nos permite presentar comportamiento en común, evitar duplicación 
   
   class Gerente extends Empleado {...}
   ```
- 
+  
+### Uso de super y this
+
+Con la palabra super la clase hija puede acceder a los atributos o metodos de la clase padre
+  ``` 
+public class Persona {
+	private String nombre;
+	public Persona(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+}
+
+public class Empleado extends Persona{
+	private double sueldo;
+	public Empleado(String nombre, double sueldo) {
+		super(nombre);
+		this.sueldo = sueldo;
+	}
+}
+
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Empleado empleado = new Empleado("Juan", 1500000);
+}
+```
+Otro ejemplo es el metodo toString(), que es un metodo de la clase Object, para poder utilizar este método se debe utlizar la anotación @Override, que quiere decir que vamos a sobreescribir un metodo de la clase padre o superior.
+```
+
+public class Persona {
+	@Override
+	public String toString() {
+		return "Persona{ " + "nombre: " + nombre + '}';
+	}
+}
+
+
+public class Empleado extends Persona{
+	@Override
+	public String toString() {
+		return super.toString() + " Empleado{ " + "Sueldo: " + sueldo + '}';
+	}
+}
+```
+
+### Sobre Carga de constructores
+Tienes que ver con distintas opciones para crear un objeto de una clase en particular, se crean diferentes constructores con diferentes argumentos
+``` 
+public class Persona {
+  public Persona(){}
+	public Persona(String nombre) {
+		this.nombre = nombre;
+	}
+}
+```
+Se puede utilizar constructores que llamen a otro constructor para la creación de un objeto, un ejemplo es la siguiente clase:    
+```
+
+public class Persona {
+	
+	private int idPersona;
+	private String nombre;
+	private static int countPersonas;
+	
+	private Persona() {
+		idPersona = ++countPersonas;
+	}
+	public Persona(String nombre) {
+		this();
+		this.nombre = nombre;
+	}
+}
+```
+En donde `this()` llama al constructor vacio, estos se hace ya que se puede tener un mejor control de como se están creando los objetos, ya que si se puede notar el constructo `Persona()` es privado y solo se puede llamar desde la misma clase.
+
+### Sobre carga de métodos
+Es parecido con la sobre carga de los constructores, pero en este caso se puede sobrecargar cualquier método. Hay que tener en cuenta que para que exista sobrecarga de métodos los argumentos de éste deben ser diferentes. También se debe tener en cuenta que el compilador se fija en el tipo de dato y no el nombre del argumento para hacer la distición de los métodos.
+```
+int suma(int a, int b){
+  return a + b;
+}
+
+double suma(double a, double b){
+  return a + b;
+}
+```
