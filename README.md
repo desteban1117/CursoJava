@@ -152,7 +152,7 @@ La herencia nos permite presentar comportamiento en común, evitar duplicación 
   class Gerente extends Empleado {...}
   ```
   
-### Uso de super y this
+## Uso de super y this
 
 Con la palabra super la clase hija puede acceder a los atributos o metodos de la clase padre
   ``` 
@@ -196,7 +196,7 @@ public class Empleado extends Persona{
 }
 ```
 
-### Sobre Carga de constructores
+## Sobre Carga de constructores
 Tienes que ver con distintas opciones para crear un objeto de una clase en particular, se crean diferentes constructores con diferentes argumentos
 ``` 
 public class Persona {
@@ -237,3 +237,61 @@ double suma(double a, double b){
   return a + b;
 }
 ```
+## Paquetes en Java
+Esto nos permite organizar clases, evitar conflictos entre nombres de clases, limitar el acceso a clases y ademas existe una biblioteca de paquetes ya existentes, clases a las cuales podemos acceder en java.
+
+## Uso de final
+En variables:  Evita cambiar el valor que tiene la variable.
+En Métodos: Evita que una subclase pueda modificar la definición del método.
+En Clases: evita que se crea una subclase a partir de esta, eso quiere decir que no se puede extender de la clase.
+
+## Arreglos
+El arreglo es un conjunto de información la cual permite agrupar datos de un tipo en particular, puede ser tanto datos primitivos u objetos.
+
+### Declaración 
+`tipo [] nombreArreglo` o `tipo nombreArreglo []`
+ejemplo:
+`int [] array` o `int array []`
+
+### Instanciar
+para instanciar un arreglo se debe de decir cual va ser el tamaño del arreglo, ejemplo
+`nombreArreglo = new tipo[5]`
+
+### Inicializar
+para inicializar los elementos de una arreglo se puede hacer de las siguientes maneras
+```
+int array [] = new [5];
+array = {1,2,3,4,5};
+array[0] = 1;
+array[1] = 2;
+...
+```
+cuando no se ha inicializado algún indice el valor que tendrá el arreglo en dicho indice es el default dependiendo del tipo que sea el arreglo.
+### Extraer valor de arreglo
+se hace de la siguiente manera:
+`int i = array[0];`
+
+## Matrices
+Es lo mismo que un arreglo, solo que esta es de dos dimenciones
+### Declaración 
+`tipo [][] nombreArreglo` o `tipo nombreArreglo [][]`
+ejemplo:
+`int [][] array` o `int array [][]`
+
+### Instanciar
+para instanciar un arreglo se debe de decir cual va ser el tamaño del arreglo, ejemplo
+`nombreArreglo = new tipo[5][5]`
+
+### Inicializar
+para inicializar los elementos de una arreglo se puede hacer de las siguientes maneras
+```
+int array [][] = new [5][5];
+array = {{1,2,3,4,5}, {6,7,8,9,10}};
+array[0][0] = 1;
+array[0][1] = 2;
+...
+```
+cuando no se ha inicializado algún indice el valor que tendrá el arreglo en dicho indice es el default dependiendo del tipo que sea el arreglo.
+### Extraer valor de arreglo
+se hace de la siguiente manera:
+`int i = array[0][0];`
