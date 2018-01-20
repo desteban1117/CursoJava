@@ -149,8 +149,7 @@ La herencia nos permite presentar comportamiento en común, evitar duplicación 
   
   class Empleado extends Persona {...}
   
-  class Gerente extends Empleado {...}
-  ```
+  class Gerente extends Empleado {...}```
   
 ## Uso de super y this
 
