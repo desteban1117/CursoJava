@@ -1,4 +1,4 @@
-# CursoJava
+# Fundamentos java
 
 ## Variables en Java
 
@@ -294,3 +294,139 @@ cuando no se ha inicializado algún indice el valor que tendrá el arreglo en di
 ### Extraer valor de arreglo
 se hace de la siguiente manera:
 `int i = array[0][0];`
+
+# Programacion Java
+
+## Sintaxis básica de una clase en Java
+```
+package <nombre paquete>
+
+import <nombre paquete>
+
+public class NombreClase{
+	<atributos>;
+	
+	<constructores>;
+	
+	<metodos>;
+}
+```
+
+## Bloques de código
+
+Todo bloque de código esta definido dentro de dos corchetes `{...}`
+
+Existe el concepto de bloques anónimos que sirven para inicializar variables en una clase, ya que estos se ejecutan antes del constructor de la clase.
+
+## Comentar con javaDoc
+Para documentar con javaDoc se debe seguir la siguiente sintaxis `/** ...... */`,tambien con este estilo de documentación se puede utilizar los siguientes caracteres de escape:
+
+@author: Nombre del autor del programa
+@deprecated: Indica que el elemento es obsoleto, pertenece a versiones anteriores y no se recomienda su uso
+@param: Definición de un parametro de un método
+@return: Descripción de lo que devuelve un método
+@see: Indica que se asocia con otros métodos o clases
+@version: version del método o clase
+
+## Argumentos variables
+
+Se usa de la siguiente manera:
+
+```
+public static void main(String[] args) {
+		
+		imprimirNumeros(1,2,3,4,5);
+	}
+	
+	public static void imprimirNumeros(int... numeros) {
+		
+		for(int i = 0; i < numeros.length;i++) {
+			System.out.println(numeros[i]);
+		}
+	}
+```
+En donde a la final los argumentos terminan siendo un arreglo, si se va utilizar varios argumentos con argumentos variables lo recomendable es que los argumentos variables sean escritos a la final de los argumentos.
+
+```
+(doube num1, String name, int... numeros)
+```
+
+## Foreach
+
+Este tipo de ciclo se puede utilizar para iterar arreglos, se usa de la siguiente manera:
+```
+public static void main(String[] args) {
+		
+		imprimirNumerosForeach(1,2,3,4,5);
+	}
+	
+	public static void imprimirNumerosForeach(int... numeros) {
+		
+		for(int numero : numeros) {
+			System.out.println(numero);
+		}
+	}
+```
+La unica desventaja es que si se necesita conocer el numero del indice no se va poder utilizar este. La ventaja es que la sintaxis es ms limpia y menos propensa a errores.
+
+## Enumeraciones en Java
+
+Estos enumerados, son un tipo especial de clases que permite guardar valores final, o sea, son constates, se puede utilizar de la siguiente manera:
+
+```
+public enum Continentes {
+	AFRICA,
+	EUROPA,
+	ASIA,
+	AMERICA,
+	OCEANIA;
+}
+
+public static void main(String[] args) {
+		
+	System.out.println(Continentes.AFRICA);
+}
+```
+Estos enum también pueden contener información y se pueden crear métodos.
+
+```
+public enum Continentes {
+	AFRICA(53),
+	EUROPA(46),
+	ASIA(44),
+	AMERICA(34),
+	OCEANIA(14);
+	
+	private final int paises;
+	
+	Continentes(int paises){
+		this.paises = paises;
+	}
+
+	public int getPaises() {
+		return paises;
+	}
+		
+}
+
+public static void main(String[] args) {
+		
+	System.out.println(Continentes.AFRICA.getPaises());
+}
+```
+Para recuperar todos los valores asociados a una enumeración se hace de la siguiente manera:
+```
+public static void imprimirContinentes() {
+		
+		for(Continentes c: Continentes.values()) {
+			System.out.println(c + ": " + c.getPaises());
+		}
+	}
+```
+## Autoboxing y Unboxing 
+
+Autoboxing es el proceso en que el compilador hace la conversión directa entre de un tipo primitivo a uno tipo objeto Object, por ejemplo, `Integer entero = 10`. en donde la clase Integer se convierte en una clase envolvente del tipo primitivo int, existe una clase envolvente por cada tipo primitivo.
+
+Unboxing sería el proceso contrario, en donde se pasa de un tipo envolvente a un tipo primitivo, `int i = entero`.
+
+La ventaja que trae de utilizar estos tipos es que puedo convertir de una clase envolvente a otra de una manera mucho más sencilla. sirve cuando se esta haciendo muchas conversiones entre tipos primitivos.
