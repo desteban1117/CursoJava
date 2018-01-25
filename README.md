@@ -432,3 +432,67 @@ Unboxing sería el proceso contrario, en donde se pasa de un tipo envolvente a u
 La ventaja que trae de utilizar estos tipos es que puedo convertir de una clase envolvente a otra de una manera mucho más sencilla. sirve cuando se esta haciendo muchas conversiones entre tipos primitivos.
 
 ## Sobreescritura de metodos
+
+Esto sucede cuando una clase hija sobre escribe un método de la clase padre. Por ejem:
+```
+public class Empleado {
+	
+	protected String nombre;
+	protected String puesto;
+	protected int nivel;
+	
+	public String obtenerDetalle() {
+		return "nombre: " + nombre + "\n" +
+			"puesto: " + puesto + "\n" +
+			"nivel: " + nivel;
+	}
+}
+
+public class Gerente extends Empleado{
+	private String departamento;
+	
+	public String obtenerDetalle() {
+		return super.obtenerDetalle() + "\n" +
+			"departamento: " + departamento;
+	}
+}
+
+```
+Se puede observar como la clase Gerente extiende de la clase Empleado y ademas sobreescribe el método obtenerDetalle, lo que hace que ya no utilicemos la implementación de la clase padre. La firma del método debe ser la misma, tanto el nombre, el retorno y argumentos, lo unico que puede cambiar es el modificador de acceso, pero un metodo que se sobreescribe no puede ser menos accesible que al metodo que sobreescribe, por ejemplo no puede pasar de public a protected o privado, pero si de privado a public.
+
+## Polimorfismo
+
+Es la avilidad de ejecutar métodos sintacticamente iguales en tipos distintos, por ejemplo.
+```
+Empleado empleado = new Empleado("Juan", 1000);
+		
+empleado = new Gerente("David",2000,"Finanzas");
+```
+
+Podemos ver como el objeto empleado auque haya sido instanciado de la clase Empleado puede contener un objeto de la clase Gerente, esto es debido a que guardan una relación de Herencia, pero entonces si se utilizara el método sobreescrito `obtenerDetalle()` cual de las dos implementaciones utilizaría?, la respuesta es la que este en tiempo de ejecución, a la cual está haciendo referencia, la que sería el de la clase Gerente para nuestro caso.
+
+La importancia del polimorfismo es que podemos generalizar un método que resiba distintos tipos en la gerarquia de clases definidas, clases padres e hijas, por ejemplo:
+
+```
+public static void imprimirDetalle(Empleado empleado) {
+	System.out.println(empleado.obtenerDetalle());
+}
+
+public static void main(String[] args) {		
+	Empleado empleado = new Empleado("Juan", 1000);
+	imprimirDetalle(empleado);
+	empleado = new Gerente("David",2000,"Finanzas");
+	imprimirDetalle(empleado);
+}
+```
+Podemos observar como es posible imprimir el detalle sin necesidad de utilizar varios tipos, solo utilizando el tipo padre, la clase Empleado.
+
+## Instance of 
+sirve para responder si una clase tiene alguna relación con otra clase que indiquemos. por ejemplo si tenemos una clase de tipo `Elipse` que extiende de la clase `Circulo` podemos preguntar si un objeto elipse guarda relación con la clase Circulo de la siguiente manera
+
+```
+Elipse figura = new Elipse()
+
+if(figura instanceof Circulo)
+```
+Si guarda relación devolvería true, de lo contrario false. Esto nos sirve a identificar de que tipo es una clase y por lo tanto tomar decisiones apartir de esto. por ejemplo en el polimorfismo identificar de que tipo es la clase para tomar decisiiones dependiendo de lo que tengamos.
