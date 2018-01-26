@@ -628,6 +628,6 @@ Una excepcion es una situación no esperada en java, existen varias clases en ja
 
 Excepciones que heredan de la clase Exception, si el programa arroja este tipo de excepciones el compilador solicitará alguna actividad con este tipo de excepción, por ejemplo procesarlas dentro de una bloque try y catch o arrojandolas en la declaración del método, por ejemlo SQLException que es relacionada cuando hay un problema con temas de manejo y uso de bases de datos.
 
-Excepciones que heredan de las clases RuntimeException en este tipos de excepciones no estamos obligados a procesarlas por lo que es obcional el uso de bloque try o catch o en la declaración del método, a este tipos de excepciones también se le conocen como excepciones en tiempo de ejecución, por ejemplo el NullPointerException. En los ultimos años existe una tendencia a usar este tipos de excepciones ya que obtine un código más limpio, permitiendo escoger al equipo de desarrollo si procesan o no las excepciones
+Excepciones que heredan de las clases RuntimeException en este tipos de excepciones no estamos obligados a procesarlas por lo que es obcional el uso de bloque try o catch o en la declaración del método, a este tipos de excepciones también se le conocen como excepciones en tiempo de ejecución, por ejemplo el NullPointerException. En los ultimos años existe una tendencia a usar este tipos de excepciones ya que obtine un código más limpio, permitiendo escoger al equipo de desarrollo si procesan o no las excepciones.
 
 
