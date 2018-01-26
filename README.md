@@ -570,6 +570,54 @@ Una clase abstracta se utiliza para encapsular funcionalidad común entre las cl
 ## Ejemplo interfaces
 
 ```
+public interface AccesoDatos {
+	
+	public static int MAX_REGISTROS = 10;
+	
+	public abstract void insertar();
+	
+	public abstract void listar();
+}
+
+public class ImplementacionMysql implements AccesoDatos{
+
+	@Override
+	public void insertar() {
+		System.out.println("Insertar en base de datos mysql");	
+	}
+
+	@Override
+	public void listar() {
+		System.out.println("Listar en base de datos mysql");	
+	}
+}
+
+public class ImplementacionOracle implements AccesoDatos{
+
+	@Override
+	public void insertar() {
+		System.out.println("Insertar en base de datos oracle");	
+	}
+
+	@Override
+	public void listar() {
+		System.out.println("Listar en base de datos oracle");	
+	}
+}
 ```
+
+## Java Beans
+
+Un java beans es una clase pura de java la cual cumple ciertas reglas para llamarse java beans, la idea es que estas puedan ser utilizadas en otras clases sin necesidad de conocer a detalle el contenido de la clase, por ello debe de cumplir con ciertas reglas:
+
+1. Debe tener un constructor vacio, ya que las tecnologias que hagan uso de nuestro javabeans deben poder instanciar nuestras clases y para elo no se pueden complicar e instanciaran una clase javabeans con el constructor vacio.
+
+2. Los atributos deben ser privados
+
+3. Cada propiedad debde de tener su método get o set
+
+4. Implementara la interface Serializable del paquete java.io
+
+No se debe de confundir los java beans con los enterprise java beans, ya que estos ultimos son tecnologías del lado del servidor en cambio los java beans pueden utilizarce en cualquier version de java
 
 
