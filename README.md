@@ -496,3 +496,80 @@ Elipse figura = new Elipse()
 if(figura instanceof Circulo)
 ```
 Si guarda relación devolvería true, de lo contrario false. Esto nos sirve a identificar de que tipo es una clase y por lo tanto tomar decisiones apartir de esto. por ejemplo en el polimorfismo identificar de que tipo es la clase para tomar decisiiones dependiendo de lo que tengamos.
+
+## Conversion de Objetos (casting)
+
+Se puede hacer conversión entre tipos de clases, cuando estamos entre clases heredadas. Si hacemos una conversión de una clase hija a una clase padre se conoce como upcasting, pero si lo hacemos desde la clase padre a la clase hija se conoce como downcasting.
+
+### Upcasting 
+En este tipo no es necesario decirle al compilador que vamos hacer un casting, por ejem:
+
+```
+Empleado empleado;
+		
+empleado = new Escritor("Roy",1500,TipoEscritura.CLASICO);
+```
+La clase Escritor extiende de la clase empleado. Hay que tener en cuenta que los métodos que hayan en la clase Escritura pero no en la clase Empleado no se podrán llamar, aunque se haya hecho el casting.
+
+### Downcasting
+
+En este tipo de casting es necesario decirle al compildor que se va hacer un casting de la siguiente manera:
+```
+Escritor escritor = (Escritor) empleado;
+resultado = escritor.getTipoEscrituraEnTexto();
+			
+resultado = ((Escritor) empleado).getTipoEscritura().getDescripcion();
+```
+
+Se puede ver como en la primera forma hay que instanciar un objeto de la clase Escritor para poder acceder a un método, mientras en la segunda forma no, aunque esta es un poco mas confusa de entender.
+
+## Clase Object
+Esta es la clase más importate en java y todas las calses heredan de manera indirecta o directamente de esta, algunos de sus métodos mas importantes son los siguientes:
+
+### toString
+Este metodo nos sirve para hacer una representación de texto de las clases, si no se sobreescribe este metodo mostrará una referencia de memoria en la que está, el nombre de la clase, etc..	
+
+### equals
+Este metodo nos sirve para comparar dos objetos, se debe de recordar que cuando se compara dos objetos con el operador `==` este estará comparando la referencia en memoria, lo cual no sirve mucho que digamos, pero con el metodo equals se compará el contenido de la clase.
+
+### hashcode
+Es metodo tambien nos sirve para comparar dos objetos solo que mienstras en equals compara su condinido el hascode compara su representación en entero
+
+## Clases Abstractas
+Si una clase contiene un método abstracto la clase tambien se debe declarar como clase abstracta, estas clases pueden contener método abstractos pero tambien no abstractos, además un método abstracto no tiene cuerpo y solo termina con `;` de esta manera unmetodo abstracto solo agrega la firma del método pero ningun comportamiento y son las clases hijas las que se encargan de implementar este método. por lo tanto la clase hija no sebreescribe el método heredado si no que lo implementa.
+
+```
+public abstract class FiguraGeometrica {
+	
+	abstract void dibujar();
+}
+
+public class Rectangulo extends FiguraGeometrica{
+	@Override
+	void dibujar() {
+		// TODO Auto-generated method stub	
+	}
+}
+```
+Una clase abstracta no se puede instanciar y esto es debido a que algo abstracto no puede materializarce en un objeto, lo que si se puede hacer es crear objetos de la clase hijas en instancias de la clase padre
+```
+public static void main(String[] args) {
+	FiguraGeometrica figura = new FiguraGeometrica() //marca error
+				
+	FiguraGeometrica figura2 = new Rectangulo(); //Si permite
+}
+```
+
+## Interfaces
+
+Una interface en la vida real es una forma en común  de comunicarse entre diferentes dispositivos o sistemas. En java una interface define el comportamiento de una clase, ya la clase implementa ese comportamiento. Una interface puede heredar de otra interface pero no de una clase en concreta, muchas clases pueden implementar la misma interface y una clase puede implentar muchas interfaces, al igual que las clases no se puede implentar objetos de una interfaces, pero si instanciar objetos que tengan una referencia de clases que implementan dicha interface, de está manera aplica el método de polimorfismo
+
+## clases abstractas vs interfaces
+Una clase abstracta se utiliza para encapsular funcionalidad común entre las clases es decir caracteristicas en común y para hacer uso de esta se debe de extender de la clase abstracta, en cambio una interface define comportamiento relacionado que puede pertenecer a cualquier clase o estructura y para hacer uso de esta se debe implementar de la interface. Las clase abstractas deben utilizarse para objetos estrechamente relacionados, mientras las interfaces son adecuadas para proporcionar funcionalidad común a clases no relacionadas entre si.
+
+## Ejemplo interfaces
+
+```
+```
+
+
