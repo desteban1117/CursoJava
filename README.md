@@ -631,3 +631,201 @@ Excepciones que heredan de la clase Exception, si el programa arroja este tipo d
 Excepciones que heredan de las clases RuntimeException en este tipos de excepciones no estamos obligados a procesarlas por lo que es obcional el uso de bloque try o catch o en la declaración del método, a este tipos de excepciones también se le conocen como excepciones en tiempo de ejecución, por ejemplo el NullPointerException. En los ultimos años existe una tendencia a usar este tipos de excepciones ya que obtine un código más limpio, permitiendo escoger al equipo de desarrollo si procesan o no las excepciones.
 
 
+## Colecciones en Java
+
+### Api de colecciones en Java
+Se divide en listas, sets y mapas, los sets son cojuntos de datos y los mapas son una llave relacionada con un dato, los mapas utilizan funciones hash para el ordenamiento de sus elementos, lo que permite que el ordenamiento de datos sea más ágil. Un set es una colección no ordenada de elementos, no se permite elementos duplicados, una lista es una colección ordenada que si permite elementos repetidos.
+
+```
+public class Main {
+
+	public static void main(String[] args) {
+		
+		List lista = new ArrayList();		
+		lista.add("1");
+		lista.add("2");
+		lista.add("3");
+		lista.add("4");
+		//valor repetido
+		lista.add("3");
+		imprimir(lista);
+		
+		Set sets = new HashSet();
+		sets.add("1");
+		sets.add("2");
+		sets.add("3");
+		sets.add("4");
+		//valor repetido
+		sets.add("3");
+		imprimir(sets);
+		
+		Map maps = new HashMap();
+		maps.put("1", "Juan");
+		maps.put("2", "david");
+		maps.put("3", "carlos");
+		maps.put("4", "andres");
+		imprimir(maps.keySet());
+		imprimir(maps.values());
+	}
+	
+	public static void imprimir(Collection collection) {
+		
+		for (Object c : collection) {
+			System.out.print(c + ", ");
+		}
+		System.out.println("");
+	}
+
+}
+```
+## Genericos
+Con los genericos no es necesario saber el tipo de dato que se le va pasar a una función. Existe las siguintes conveciones a la hora de utilizar estos tipos Genericos.
+
+E: Element(Utilizado generalmento por el framework de colecciones en java)
+K: Key(Utilizado en mapas)
+N: Number(utilizado para numeros)
+T: Type(Representa un tipo, es decir, una clase)
+V: Value(Representa un valor, es usado en mapas)
+S,U,V: Usado para representar otros tipos 
+
+Ejemlo:
+```
+public class ClaseGenerica<T> {
+	T objeto;
+	
+	public ClaseGenerica(T objeto){
+		this.objeto = objeto;
+	}
+	
+	public void obtenerTipo() {
+		System.out.println("El tipo es "+ objeto.getClass().getName());
+	}
+}
+public static void main(String[] args) {
+		
+	ClaseGenerica<Integer> objetoInt = new ClaseGenerica<Integer>(150);
+	objetoInt.obtenerTipo();
+		
+	ClaseGenerica<String> objetoString = new ClaseGenerica<String>("Prueba");
+	objetoString.obtenerTipo();
+}
+```
+Otro ejemplo con colecciones es:
+```
+public static void main(String[] args) {
+		
+		List<String> lista = new ArrayList<>();		
+		lista.add("1");
+		lista.add("2");
+		lista.add("3");
+		lista.add("4");
+		//valor repetido
+		lista.add("3");
+		imprimir(lista);
+		
+		Set<String> sets = new HashSet<>();
+		sets.add("1");
+		sets.add("2");
+		sets.add("3");
+		sets.add("4");
+		//valor repetido
+		sets.add("3");
+		imprimir(sets);
+		
+		Map<String, String> maps = new HashMap<>();
+		maps.put("1", "Juan");
+		maps.put("2", "david");
+		maps.put("3", "carlos");
+		maps.put("4", "andres");
+		imprimir(maps.keySet());
+		imprimir(maps.values());
+	}
+	
+	public static void imprimir(Collection<String> collection) {
+		
+		for (Object c : collection) {
+			System.out.print(c + ", ");
+		}
+		System.out.println("");
+	}
+
+```
+
+## Entradas y salidas de datos
+
+### Consola entrada y salida de datos
+Existen tresvariables con las cuales podemos interactuar con la consola del sistema operativo.
+System.in implementa la entrada estándar
+System.out implementa la salida estándar
+System.err implementa la salida de error
+
+Ejemplo de System.in:
+```
+public static void main(String[] args) {
+	String captura;
+	InputStreamReader input = new InputStreamReader(System.in);
+	BufferedReader bInput = new BufferedReader(input);
+	try {
+		System.out.println("Introduce un dato:");
+		captura = bInput.readLine();
+		while(captura != null) {
+			System.out.println("Dato introducido: " + captura);
+			captura = bInput.readLine();
+		}
+	}catch (IOException e) {
+		e.printStackTrace();
+	}
+}
+```
+Utilizando la clase Scanner:
+```
+public static void main(String[] args) {
+	String captura = null;
+	Scanner scan = new Scanner(System.in);
+	System.out.println("Introduce un dato:");
+	captura = scan.nextLine();
+	while(captura != null) {
+		System.out.println("Dato introducido: " + captura);
+		captura = scan.nextLine();
+	}
+}
+```
+## Manejo de archivos en java
+
+### Creación de archivos
+```
+public static void main(String[] args) {
+	File archivo = new File("/home/david/prueba.txt");
+	try {
+		PrintWriter salida = new PrintWriter(new FileWriter(archivo));
+		salida.println("Información dentro del archivo");
+		salida.close();
+	}catch (IOException e) {
+		e.printStackTrace();
+	}
+	System.out.println("El archivo se ha creado correctamente");
+}
+```
+Se utilizan las clases File, FileWriter y PrintWriter para crear un archivo. Primero se crea un archivo con la clase File, pero esto no crea un archivo físio, para ello utilizamos la clase FileWriter y la clase PrintWriter quien es la encargada de crear el archivo en el disco duro. También podemos notar como con el método `println()` podemos agregar información al archivo. Cada vez que se ejecute este código creará un nuevo archivo y borrará el anterior, si no se desea esto y se quiera guardar el contenido que ya contenía el archivo y solo agregar lineas nuevas, simplemente se debe de agregar true al crear FileWrite, `new FileWriter(archivo, true)`.
+
+### Lectrua de archivos
+```
+public static void main(String[] args) {
+	File archivo = new File("/home/david/prueba.txt");
+	try {
+		BufferedReader entrada = new BufferedReader(new FileReader(archivo));
+		String lectura;
+		lectura = entrada.readLine();
+		while(lectura != null) {
+			System.out.println(lectura);
+			lectura = entrada.readLine();
+		}
+		entrada.close();
+	}catch (FileNotFoundException e) {
+		e.printStackTrace();
+	}catch (IOException e) {
+		e.printStackTrace();
+	}
+}
+```
+Para leer un archivo utilizamos las clases File, FileReader y BufferedReader, en donde esta ultima es la encargada de leer el archivo.
