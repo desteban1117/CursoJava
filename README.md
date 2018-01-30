@@ -829,3 +829,17 @@ public static void main(String[] args) {
 }
 ```
 Para leer un archivo utilizamos las clases File, FileReader y BufferedReader, en donde esta ultima es la encargada de leer el archivo.
+
+# JDBC en Java
+
+JDBC es un Api que se utiliza en la capa de Datos y nos ayuda a conectarnos con la base de datos entre más funciones. Para utilizar JDBC se deben de seguir los siguientes pasos:
+
+1. Descargar el driver dependiendo de la base de datos a utilizar
+2. Agregar el driver al clashpath de la aplicación
+3. Creamos una clase java que haga los siguientes pasos:
+	-Registrar el driver JDBC
+	-Crea una conexion a la bd
+	-Crea una sentencia SQL
+	-Ejecuta la sentencia
+	-cerrar los objetos creados como las conexiones
+
