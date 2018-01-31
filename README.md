@@ -843,3 +843,43 @@ JDBC es un Api que se utiliza en la capa de Datos y nos ayuda a conectarnos con 
 	-Ejecuta la sentencia
 	-cerrar los objetos creados como las conexiones
 
+```
+public static void main(String[] args) {
+	String url = "jdbc:mysql://localhost:3306/sga?useSSL=false";
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+			
+		Connection conexion = (Connection) DriverManager.getConnection(url,
+				"root","root");
+		
+		Statement instruccion = conexion.createStatement();
+		
+		String query = "select * from Personas";
+			
+		ResultSet resultado = instruccion.executeQuery(query);
+			
+		while(resultado.next()) {
+			System.out.print(resultado.getInt(1) + " ");
+			System.out.print(resultado.getString(2) + " ");
+			System.out.println(resultado.getString(3));
+		}
+		resultado.close();
+		instruccion.close();
+		conexion.close();
+	}catch (ClassNotFoundException | SQLException e) {
+		e.getStackTrace();
+	}
+}
+```
+## Driver JDBC
+
+Existen tres formas para conectarce a una base de datos a traves de los drives del JDBC, la primera forma es utilizando el DriverManager como se muestra en el ejemplo anterior, esta clase se encuentra en el paquete `java.sql`. La segunda forma se utiliza el concepto de DataSource, esta obción es la más recomendada. La ultima forma es por medio del pool de conexiones.
+
+## Tipos de statement (sentencias) en JDBC
+La interface statement de JDBC tiene distintos tipos
+-Statement: Se utiliza para cualquier tipo de sentencia SQL, pero no hace cache del SQL ejecutado.Cuando sea que una consulta es ejecutada en SQL Server, su plan de ejecución, así como algunos datos útiles de ejecución son ubicados en el caché del plan para usos futuros.
+
+-PreparedStatement: Se utiliza para hacer caché del query, evitando la recopilación de la sentencia SQL. Se recomienda si se va a utilizar una sentencia SQL en repetidas ocaciones
+
+-CallableStatement: Se utiliza para llamar procedimientos de una base de datos.
