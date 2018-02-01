@@ -883,3 +883,20 @@ La interface statement de JDBC tiene distintos tipos
 -PreparedStatement: Se utiliza para hacer caché del query, evitando la recopilación de la sentencia SQL. Se recomienda si se va a utilizar una sentencia SQL en repetidas ocaciones
 
 -CallableStatement: Se utiliza para llamar procedimientos de una base de datos.
+
+## Métodos de la interface statements en JDBC
+Para una sentencia SELECT:
+-executeQuery(String sql): Regresa un objeto ResultSet para procesar los registros.
+
+Para una sentencia DML/DDL:
+-executeUpdate(String sql): Regrasa un int, numero de datos que se han modificado.
+
+Para cualquier sentencia:
+-execute(String sql): Regresa un boolean, true si se ejecuta un select o false si se ejecuta cualquir tipo de sentencia.
+
+## Excepciones en JDBC
+
+- SQLException
+	-SQLWarning
+		-DataTruncationException
+	-BatchUpdateException
