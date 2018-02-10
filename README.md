@@ -900,3 +900,13 @@ Para cualquier sentencia:
 	-SQLWarning
 		-DataTruncationException
 	-BatchUpdateException
+	
+## Transacciones con JDBC
+Una transaccion es un conjunto de sentencias SQL (select, update ..) las cuales son agrupadas en bloques de ejecución y si algunas de las ejecuciones falla podemos dar marcha atras haciendo un rollback a todo el bloque ejecutado y si los cambios son correctos podemos guardar los cambios haciendo commit al bloque ejecutado. Sus métodos son:
+-autocommit: (valores true o false)
+-commit: guardas los cambios del bloque de ejecució en la db
+rollback: revierte los cambios del bloque de ejecución.
+
+Por default el autocomit tiene valor de true, por la tanto es bueno que se ponga en false por si hay un error y toque hacer un rollback.
+
+Si cerramos la conexión de JDBC se hace un autocomit aunque se tenga deshabilitada esta función.
