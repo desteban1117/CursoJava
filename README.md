@@ -125,7 +125,8 @@ La mempria stack se utiliza para almacenar las variables locales y las llamada d
 
 ## Encapsulamiento
 
-El estado de un objeto esta generalmente oculto, a esto se le conoce como encapsulamiento. Java utliza modificadores para definir esta caracteristica. Son cuatro: public, private, static y default.
+El estado de un objeto esta generalmente oculto, a esto se le conoce como encapsulamiento. Java utliza modificadores para definir esta caracteristica. Son cuatro: public, private, 
+y default.
 
 ## Contexto Estatico y Dinamico
 
@@ -910,3 +911,11 @@ rollback: revierte los cambios del bloque de ejecución.
 Por default el autocomit tiene valor de true, por la tanto es bueno que se ponga en false por si hay un error y toque hacer un rollback.
 
 Si cerramos la conexión de JDBC se hace un autocomit aunque se tenga deshabilitada esta función.
+
+## Cohesión y Acoplamiento
+
+Cohesion: es la medida en la que un componente de software se dedica a realizar solo la tarea para la que fue creado, delegando tareas complementarias a otros componentes.
+
+Acoplamiento: es la medida en la que los cambios de un componente tienden a necesitar cambios de otros componentes. Es decir mide el grado de dependencia entre dos o más componentes.
+
+El objetivo de un diseño de software es tener al cohesión y un bajo acoplamiento
