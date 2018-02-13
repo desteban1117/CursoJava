@@ -919,3 +919,6 @@ Cohesion: es la medida en la que un componente de software se dedica a realizar 
 Acoplamiento: es la medida en la que los cambios de un componente tienden a necesitar cambios de otros componentes. Es decir mide el grado de dependencia entre dos o más componentes.
 
 El objetivo de un diseño de software es tener al cohesión y un bajo acoplamiento
+
+## Callable statement con JDBC
+Muchas veces por las cantidades de llamadas a bases de datos que pueda tener una lógica de negocio, es más conveniente tener procedimientos en bases de datos. La forma para llamar estos procedimientos (store procedure) con JDBC se hace a traves de callable statement 
