@@ -922,3 +922,12 @@ El objetivo de un diseño de software es tener al cohesión y un bajo acoplamien
 
 ## Callable statement con JDBC
 Muchas veces por las cantidades de llamadas a bases de datos que pueda tener una lógica de negocio, es más conveniente tener procedimientos en bases de datos. La forma para llamar estos procedimientos (store procedure) con JDBC se hace a traves de callable statement 
+
+## Metadatos en JDBC
+Un metadato procorciona información de los objetos existentes en una base de datos, por ejemplo, en una tabla los metadatos pueden darnos información de cuantas columnas tiene la tabla o de que tipo son las columnas, esto nos puede servir en caso de que sea necesario modificar columnas de una tabla o sea creada de manera dinamica la tabla de base de datos
+
+## Pool de conexiones JDBC
+un pool de conexiones nos permite aglizar el proceso de obtener una conexion por cada clase java que la necesite, ya que el objetivo de este es tener listo varias conexiones a la base de datos, de manera que sea mucho más eficiente el proceso de obtener y liberar una conexion a la base de datos. Hay tres formas de crear un pool de conexiones:
+1. a traves de código Java
+2. Utilizar algún proyecto como el JDBC de apache
+3. Otra es apoyarnos del servidor web de java como tomcat glasfis etc..
