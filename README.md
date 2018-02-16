@@ -931,3 +931,7 @@ un pool de conexiones nos permite aglizar el proceso de obtener una conexion por
 1. a traves de código Java
 2. Utilizar algún proyecto como el JDBC de apache
 3. Otra es apoyarnos del servidor web de java como tomcat glasfis etc..
+
+## ORM (Object-Relational mapping)
+El ORM nos permite que a partir del modelo de base datos podamos crear las clases Java que representan, en el caso ms simple, a una tabla de base de datos relacional. Como a partir del modelo de identidades crearemos las clases Java, a este concepto se le conoce como ingenieria inversa
+
