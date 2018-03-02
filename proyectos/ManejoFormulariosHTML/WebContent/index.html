@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Manejo formularios</title>
+
+<script type="text/javascript" src="recursos/funciones.js"></script>
+</head>
+<body>
+	<form action="Servlet" method="post" onsubmit="return validarFormularios(this);">
+		<table border="1">
+			<tr>
+				<th colspan="2">Formulario registro de datos</th>
+			</tr>
+			
+			<tr>
+				<td>Usuario: </td>
+				<td><input type="text" name="usuario" 
+						placeholder="Nombre de usuario"></td>
+			</tr>
+			
+			<tr>
+				<td>Password: </td>
+				<td><input type="text" name="password" 
+						placeholder="Password"></td>
+			</tr>
+			
+			<tr>
+				<td>Tecnología de interés: </td>
+				<td>
+					Java<input type="checkbox" name="tecnologia" value="java">
+					.Net<input type="checkbox" name="tecnologia" value="net">
+					Php<input type="checkbox" name="tecnologia" value="php">
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Genero: </td>
+				<td>
+					Hombre<input type="radio" name="genero" value="H">
+					Mujer<input type="radio" name="genero" value="M">
+				</td>	
+			</tr>
+			
+			<tr>
+				<td>Ocupación: </td>
+				<td>
+					<select name="ocupacion">
+						<option value="profesor">Profesor</option>
+						<option value="ingeniero">Ingeniero</option>
+						<option value="jubilado">Jubilado</option>
+						<option value="otro">Otro</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Musica Favorita</td>
+				<td>
+					<select name="musica" multiple>
+						<option value="rock">Rock</option>
+						<option value="pop">Pop</option>
+						<option value="salsa">Salsa</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Comentarios:</td>
+				<td><textarea name="comentarios" rows="2" cols="20"></textarea></td>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="reset" value="Limpriar">
+				</td>
+				<td>
+					<input type="submit" value="Enviar">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
